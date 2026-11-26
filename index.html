@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#171714" />
+  <meta name="description" content="Menu digitale Strakkino" />
+  <title>Strakkino — Menu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-overlay"></div>
+    <div class="topline"><span class="brand">STRAKKINO</span><button class="admin-trigger" id="adminTrigger" title="Gestione menu">⚙</button></div>
+    <div class="hero-content"><p class="eyebrow">CUCINA · CONVIVIALITÀ · BOLOGNA</p><h1>Il nostro<br><em>menu.</em></h1><p class="hero-note">Scegli qualcosa di buono.</p></div>
+    <div class="hero-bottom"><span>MENU DIGITALE</span><span id="updatedLabel"></span></div>
+  </header>
+  <main class="menu-wrap">
+    <div class="menu-intro"><span class="section-kicker">DA STRAKKINO</span><h2>Buon appetito.</h2><p>Ingredienti, sapori e piccoli piaceri da condividere.</p></div>
+    <div class="category-nav" id="categoryNav" aria-label="Categorie menu"></div>
+    <div id="menuContent"></div>
+    <footer class="footer"><div class="brand">STRAKKINO</div><p>Un tavolo, qualcosa di buono, il momento giusto.</p><span>© Strakkino</span></footer>
+  </main>
+  <dialog id="adminDialog" class="admin-dialog">
+    <div class="admin-header"><div><span class="section-kicker">STRakkino · ADMIN</span><h2>Gestione menu</h2></div><button class="close-btn" id="closeAdmin">×</button></div>
+    <div class="admin-tabs"><button class="tab active" data-tab="items">Piatti</button><button class="tab" data-tab="categories">Categorie</button><button class="tab" data-tab="data">Import / Export</button></div>
+    <section id="adminItems" class="admin-pane"></section>
+    <section id="adminCategories" class="admin-pane hidden"></section>
+    <section id="adminData" class="admin-pane hidden"></section>
+    <div class="admin-foot"><span class="save-status" id="saveStatus">Salvataggio locale</span><button class="btn btn-dark" id="closeAndSave">Fine</button></div>
+  </dialog>
+  <dialog id="itemDialog" class="item-dialog"><form id="itemForm" method="dialog"><div class="admin-header"><h2 id="itemFormTitle">Nuovo piatto</h2><button type="button" class="close-btn" id="cancelItem">×</button></div><input type="hidden" id="itemId"><label>Nome<input id="itemName" required></label><label>Categoria<select id="itemCategory" required></select></label><label>Descrizione<textarea id="itemDescription" rows="3"></textarea></label><label>Ingredienti (separati da virgola)<textarea id="itemIngredients" rows="2"></textarea></label><label>Allergeni<input id="itemAllergens" placeholder="es. glutine, latticini"></label><label>Prezzo (€)<input id="itemPrice" type="number" step="0.01" min="0" required></label><label>Foto URL<input id="itemImage" placeholder="https://..."></label><label>Oppure carica foto<input id="itemUpload" type="file" accept="image/*"></label><div id="imagePreview" class="image-preview"></div><label class="inline-check"><input type="checkbox" id="itemAvailable" checked> Disponibile</label><div class="form-actions"><button type="button" class="btn btn-light" id="cancelItem2">Annulla</button><button type="submit" class="btn btn-dark">Salva piatto</button></div></form></dialog>
+  <script src="app.js"></script>
+</body>
+</html>
